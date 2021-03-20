@@ -1,40 +1,7 @@
-Scanning dependencies of target battleBit_lib
-[  3%] Building C object CMakeFiles/battleBit_lib.dir/src/main.c.o
-[  7%] Building C object CMakeFiles/battleBit_lib.dir/src/server.c.o
-[ 11%] Building C object CMakeFiles/battleBit_lib.dir/src/repl.c.o
-[ 15%] Building C object CMakeFiles/battleBit_lib.dir/src/game.c.o
-[ 19%] Building C object CMakeFiles/battleBit_lib.dir/src/char_buff.c.o
-[ 23%] Building C object CMakeFiles/battleBit_lib.dir/src/helper.c.o
-[ 26%] Linking C static library libbattleBit_lib.a
 [ 26%] Built target battleBit_lib
-Scanning dependencies of target battleBit
-[ 30%] Building C object CMakeFiles/battleBit.dir/src/main.c.o
-[ 34%] Building C object CMakeFiles/battleBit.dir/src/server.c.o
-[ 38%] Building C object CMakeFiles/battleBit.dir/src/repl.c.o
-[ 42%] Building C object CMakeFiles/battleBit.dir/src/game.c.o
-[ 46%] Building C object CMakeFiles/battleBit.dir/src/char_buff.c.o
-[ 50%] Building C object CMakeFiles/battleBit.dir/src/helper.c.o
-[ 53%] Linking C executable battleBit
 [ 53%] Built target battleBit
-Scanning dependencies of target gtest
-[ 57%] Building CXX object googletest/lib/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-[ 61%] Linking CXX static library ../../../lib/libgtest.a
 [ 61%] Built target gtest
-Scanning dependencies of target gtest_main
-[ 65%] Building CXX object googletest/lib/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
-[ 69%] Linking CXX static library ../../../lib/libgtest_main.a
 [ 69%] Built target gtest_main
-Scanning dependencies of target battleBit_tests
-[ 73%] Building CXX object googletest/CMakeFiles/battleBit_tests.dir/char_buff.cpp.o
-[ 76%] Building CXX object googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o
-[ 80%] Building CXX object googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.o
-[ 84%] Linking CXX executable battleBit_tests
 [ 84%] Built target battleBit_tests
-Scanning dependencies of target gmock
-[ 88%] Building CXX object googletest/lib/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
-[ 92%] Linking CXX static library ../../../lib/libgmock.a
 [ 92%] Built target gmock
-Scanning dependencies of target gmock_main
-[ 96%] Building CXX object googletest/lib/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-[100%] Linking CXX static library ../../../lib/libgmock_main.a
 [100%] Built target gmock_main
