@@ -1,3 +1,16 @@
 ;; TODO - implement counting up from 1 to 10
 ;; in Little Man Computer assembly
 ;; Paste the code below, along with the output
+start   LDA current
+loop    OUT
+        SUB until
+        BRP exit
+        LDA current
+        ADD one
+        STA current
+        BRA loop
+exit    HLT
+
+current DAT 0
+until   DAT 10
+one     DAT 1
