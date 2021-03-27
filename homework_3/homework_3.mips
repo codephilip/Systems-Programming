@@ -3,10 +3,10 @@
 ;; Paste the code below, along with the output
 
 .data
+  var_newline:   .asciiz    "\n"
 .text
 .globl main
   main:
-
     li $8, 0 
     li $9, 10
 
@@ -15,12 +15,16 @@
       li $v0, 1
       move $a0, $8  
       syscall
+      
+      li $v0, 4
+      la $a0, var_newline
+      syscall
+      
+      addi $8, $8, 1
+      b naturalNumber
+  
+    b exitLabel
 
-
-    Addi $8, $8, 1 #transition to next natural number
-
-
-    B exitLabel
   exitLabel:
     li $v0, 10
     syscall
