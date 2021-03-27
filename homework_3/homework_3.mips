@@ -1,3 +1,26 @@
 ;; TODO - implement counting up from 1 to 10
 ;; in MIPS assembly
 ;; Paste the code below, along with the output
+
+.data
+.text
+.globl main
+  main:
+
+    li $8, 0 
+    li $9, 10
+
+    naturalNumber:
+      bgt $8, $9, exitLabel 
+      li $v0, 1
+      move $a0, $8  
+      syscall
+
+
+    Addi $8, $8, 1 #transition to next natural number
+
+
+    B exitLabel
+  exitLabel:
+    li $v0, 10
+    syscall
