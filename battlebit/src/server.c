@@ -66,9 +66,9 @@ void* handle_client_connect(void* args) {
     server_broadcast(output);
     cb_reset(output);
 
-    cb_append(output, "battleBit(? for help) >");
+    /*cb_append(output, "battleBit(? for help) >");
     send(socket, output->buffer, output->size, 0);
-    cb_reset(output);
+    cb_reset(output);*/
 
     while (data_len > 0) {
 
@@ -82,12 +82,11 @@ void* handle_client_connect(void* args) {
         char complete = 0;
 
         if (data_len > 0) { complete = data[data_len - 1] == '\n'; }
+        memset(data, 0, data_len);
 
-        //char complete = strcmp(data, "\r\n");
+        if (complete == 1) {
 
-        if (complete == 0) {
-
-            char* command = cb_tokenize(input, " \n");
+            char* command = cb_tokenize(input, " \r\n");
 
             pthread_mutex_lock(&lock);
 
@@ -158,7 +157,7 @@ void* handle_client_connect(void* args) {
 
                             cb_append(output, "Player ");
                             cb_append_int(output, player);
-                            cb_append(output, " has loaded the ships.");
+                            cb_append(output, " has loaded the ships.\r\n");
 
                             server_broadcast(output);
                         }
@@ -237,11 +236,12 @@ void* handle_client_connect(void* args) {
                 cb_append(output, "Unknown command: ");
                 cb_append(output, command);
                 cb_append(output, "\r\n");
-                send(socket, output->buffer, output->size, 0);
+                server_send(socket, output);
             }
 
             cb_reset(output);
             cb_reset(input);
+            
 
             pthread_mutex_unlock(&lock);
         }
