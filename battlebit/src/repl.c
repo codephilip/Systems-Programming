@@ -103,13 +103,13 @@ void repl_execute_command(struct char_buff * buffer) {
 void repl_print_board(game *game, int player, char_buff * buffer) {
 
     player_info player_info = game->players[player];
-    cb_append(buffer, "battleBit.........\n");
-    cb_append(buffer, "-----[ ENEMY ]----\n");
+    cb_append(buffer, "battleBit.........\r\n");
+    cb_append(buffer, "-----[ ENEMY ]----\r\n");
     repl_print_hits(&player_info, buffer);
-    cb_append(buffer, "==================\n");
-    cb_append(buffer, "-----[ SHIPS ]----\n");
+    cb_append(buffer, "==================\r\n");
+    cb_append(buffer, "-----[ SHIPS ]----\r\n");
     repl_print_ships(&player_info, buffer);
-    cb_append(buffer, ".........battleBit\n\n");
+    cb_append(buffer, ".........battleBit\r\n\r\n");
 }
 
 void repl_print_ships(player_info *player_info, char_buff *buffer) {
@@ -121,7 +121,7 @@ void repl_print_ships(player_info *player_info, char_buff *buffer) {
 
     unsigned long long mask = 1u;
 
-    cb_append(buffer, "  0 1 2 3 4 5 6 7\n");
+    cb_append(buffer, "  0 1 2 3 4 5 6 7\r\n");
 
     for (int j = 0; j < 64; ++j) {
 
@@ -130,7 +130,7 @@ void repl_print_ships(player_info *player_info, char_buff *buffer) {
         if (mask & player_info->ships) cb_append(buffer, "X ");
         else cb_append(buffer, "  ");
 
-        if (j % 8 == 7) cb_append(buffer, "\n");
+        if (j % 8 == 7) cb_append(buffer, "\r\n");
 
         mask = mask << 1ull;
     }
@@ -147,7 +147,7 @@ void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) 
 
     unsigned long long mask = 1u;
 
-    cb_append(buffer, "  0 1 2 3 4 5 6 7\n");
+    cb_append(buffer, "  0 1 2 3 4 5 6 7\r\n");
 
     for (int j = 0; j < 64; ++j) {
 
@@ -161,7 +161,7 @@ void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) 
 
         else cb_append(buffer, "  ");
 
-        if (j % 8 == 7) cb_append(buffer, "\n");
+        if (j % 8 == 7) cb_append(buffer, "\r\n");
 
         mask = mask << 1ull;
     }

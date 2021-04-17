@@ -16,7 +16,9 @@
 #include <netdb.h>
 
 static game_server *SERVER;
+
 static pthread_mutex_t lock;
+static char_buff* inputs[2];
 
 int init_server() {
     if (SERVER == NULL) {
@@ -56,6 +58,8 @@ void* handle_client_connect(void* args) {
     char_buff* input = cb_create(1024);
     char_buff* output = cb_create(1024);
 
+    inputs[player] = input;
+
     cb_reset(input);
     cb_reset(output);
 
@@ -63,12 +67,8 @@ void* handle_client_connect(void* args) {
     cb_append_int(output, player);
     cb_append(output, "\r\n");
 
-    server_broadcast(output);
+    server_broadcast(output, player);
     cb_reset(output);
-
-    /*cb_append(output, "battleBit(? for help) >");
-    send(socket, output->buffer, output->size, 0);
-    cb_reset(output);*/
 
     while (data_len > 0) {
 
@@ -121,10 +121,19 @@ void* handle_client_connect(void* args) {
 
                 cb_append(output, "Player ");
                 cb_append_int(output, player);
-                cb_append(output, " ");
-                cb_append(output, input->buffer);
+                cb_append(output, " says:");
 
-                server_broadcast(output);
+                char* token;
+
+                while ((token = cb_next_token(input)) != 0) {
+                
+                    cb_append(output, " ");
+                    cb_append(output, token);
+                }
+                    
+                cb_append(output, "\r\n");
+
+                server_broadcast(output, player);
             }
 
             else if (strcmp(command, "load") == 0) {
@@ -150,7 +159,7 @@ void* handle_client_connect(void* args) {
                             cb_append(output, "All players loaded their ships, player 0 starts!\r\n");
 
                             g->status = PLAYER_0_TURN;
-                            server_broadcast(output);
+                            server_broadcast(output, player);
                         }
 
                         else {
@@ -159,7 +168,7 @@ void* handle_client_connect(void* args) {
                             cb_append_int(output, player);
                             cb_append(output, " has loaded the ships.\r\n");
 
-                            server_broadcast(output);
+                            server_broadcast(output, player);
                         }
                     }
                 }
@@ -226,7 +235,22 @@ void* handle_client_connect(void* args) {
                             g->status == INITIALIZED;
                         }
 
-                        server_broadcast(output);
+                        else {
+
+                            if (g->status == PLAYER_0_TURN) {
+
+                                g->status = PLAYER_1_TURN;
+                                cb_append(output, "Player 1, it is your turn\r\n");
+                            }
+
+                            else {
+
+                                g->status = PLAYER_0_TURN;
+                                cb_append(output, "Player 0, it is your turn\r\n");
+                            }
+                        }
+
+                        server_broadcast(output, player);
                     }
                 }
             }
@@ -254,7 +278,7 @@ void* handle_client_connect(void* args) {
     close(socket);
     socket = 0;
 
-    server_broadcast(output);
+    server_broadcast(output, player);
 }
 
 void server_send(int socket, char_buff* msg) {
@@ -264,13 +288,21 @@ void server_send(int socket, char_buff* msg) {
 
 }
 
-void server_broadcast(char_buff *msg) {
+void server_broadcast(char_buff *msg, int player) {
 
     cb_append(msg, "battleBit (? for help) > ");
 
-   
-    if (SERVER->player_sockets[0] != 0) send(SERVER->player_sockets[0], msg->buffer, msg->size, 0);
-    if (SERVER->player_sockets[1] != 0) send(SERVER->player_sockets[1], msg->buffer, msg->size, 0);
+    if (SERVER->player_sockets[0] != 0) {
+    
+        send(SERVER->player_sockets[0], msg->buffer, msg->size, 0);
+        if (strlen(inputs[0]->buffer) > 0 && player) send(SERVER->player_sockets[0], inputs[0]->buffer, inputs[0]->size, 0);
+    }
+        
+    if (SERVER->player_sockets[1] != 0) {
+    
+        send(SERVER->player_sockets[1], msg->buffer, msg->size, 0);
+        if (strlen(inputs[1]->buffer) > 0 && !player) send(SERVER->player_sockets[1], inputs[1]->buffer, inputs[1]->size, 0);
+    } 
 }
 
 void* run_server(void* ddd) {
