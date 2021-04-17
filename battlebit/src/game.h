@@ -13,14 +13,18 @@
 enum game_status {CREATED, INITIALIZED, PLAYER_0_TURN, PLAYER_1_TURN, PLAYER_0_WINS, PLAYER_1_WINS};
 
 typedef struct player_info {
+
     unsigned long long hits;
     unsigned long long shots;
     unsigned long long ships;
+
 } player_info;
 
 typedef struct game {
+
     enum game_status status;
     player_info players[2];
+
 } game;
 
 struct game * game_get_current();

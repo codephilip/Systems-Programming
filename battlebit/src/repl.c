@@ -13,7 +13,7 @@ struct char_buff * repl_read_command(char * prompt) {
     printf("%s", prompt);
     char *line = NULL;
     size_t buffer_size = 0; // let getline autosize it
-    if (getline(&line, &buffer_size, stdin) == -1) {
+    if (getline(&line, &buffer_size, stdin) == -1) {    ///
         if (feof(stdin)) {
             exit(EXIT_SUCCESS);  // We received an EOF
         } else  {
@@ -33,15 +33,23 @@ struct char_buff * repl_read_command(char * prompt) {
 }
 
 void repl_execute_command(struct char_buff * buffer) {
+
     char* command = cb_tokenize(buffer, " \n");
+
     if (command) {
+
         char* arg1 = cb_next_token(buffer);
         char* arg2 = cb_next_token(buffer);
         char* arg3 = cb_next_token(buffer);
+
         if (strcmp(command, "exit") == 0) {
+
             printf("goodbye!");
             exit(EXIT_SUCCESS);
-        } else if(strcmp(command, "?") == 0) {
+        }
+
+        else if (strcmp(command, "?") == 0) {
+
             printf("? - show help\n");
             printf("load [0-1] <string> - load a ship layout file for the given player\n");
             printf("show [0-1] - shows the board for the given player\n");
@@ -50,46 +58,50 @@ void repl_execute_command(struct char_buff * buffer) {
             printf("reset - reset the game\n");
             printf("server - start the server\n");
             printf("exit - quit the server\n");
-        } else if(strcmp(command, "server") == 0) {
-            server_start();
-        } else if(strcmp(command, "show") == 0) {
+        }
 
-            struct char_buff *boardBuffer = cb_create(2000);
+        else if (strcmp(command, "server") == 0) server_start();
+
+        else if (strcmp(command, "show") == 0) {
+
+            struct char_buff* boardBuffer = cb_create(2000);
             repl_print_board(game_get_current(), atoi(arg1), boardBuffer);
             printf("%s", boardBuffer->buffer);
             cb_free(boardBuffer);
+        }
 
-        } else if(strcmp(command, "reset") == 0) {
+        else if (strcmp(command, "reset") == 0) game_init();
 
-            game_init();
-
-        } else if (strcmp(command, "load") == 0) {
+        else if (strcmp(command, "load") == 0) {
 
             int player = atoi(arg1);
             game_load_board(game_get_current(), player, arg2);
+        }
 
-        } else if (strcmp(command, "fire") == 0) {
+        else if (strcmp(command, "fire") == 0) {
             int player = atoi(arg1);
             int x = atoi(arg2);
             int y = atoi(arg3);
-            if (x < 0 || x >= BOARD_DIMENSION || y < 0 || y >= BOARD_DIMENSION) {
+
+            if (x < 0 || x >= BOARD_DIMENSION || y < 0 || y >= BOARD_DIMENSION)
                 printf("Invalid coordinate: %i %i\n", x, y);
-            } else {
+
+            else {
+
                 printf("Player %i fired at %i %i\n", player + 1, x, y);
                 int result = game_fire(game_get_current(), player, x, y);
-                if (result) {
-                    printf("  HIT!!!");
-                } else {
-                    printf("  Miss");
-                }
+
+                if (result) printf("  HIT!!!\n");
+                else printf("  Miss\n");
             }
-        } else {
-            printf("Unknown Command: %s\n", command);
         }
+
+        else printf("Unknown Command: %s\n", command);
     }
 }
 
 void repl_print_board(game *game, int player, char_buff * buffer) {
+
     player_info player_info = game->players[player];
     cb_append(buffer, "battleBit.........\n");
     cb_append(buffer, "-----[ ENEMY ]----\n");
@@ -101,17 +113,56 @@ void repl_print_board(game *game, int player, char_buff * buffer) {
 }
 
 void repl_print_ships(player_info *player_info, char_buff *buffer) {
+
     // Step 3 - Implement this to print out the visual ships representation
     //  for the console.  You will need to use bit masking for each position
     //  to determine if a ship is at the position or not.  If it is present
     //  you need to print an X.  If not, you need to print a space character ' '
+
+    unsigned long long mask = 1u;
+
+    cb_append(buffer, "  0 1 2 3 4 5 6 7\n");
+
+    for (int j = 0; j < 64; ++j) {
+
+        if (j % 8 == 0) { cb_append_int(buffer, j / 8); cb_append(buffer, " "); }
+
+        if (mask & player_info->ships) cb_append(buffer, "X ");
+        else cb_append(buffer, "  ");
+
+        if (j % 8 == 7) cb_append(buffer, "\n");
+
+        mask = mask << 1ull;
+    }
 }
 
 void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) {
+
     // Step 4 - Implement this to print out a visual representation of the shots
     // that the player has taken and if they are a hit or not.  You will again need
     // to use bit-masking, but this time you will need to consult two values: both
     // hits and shots values in the players game struct.  If a shot was fired at
     // a given spot and it was a hit, print 'H', if it was a miss, print 'M'.  If
     // no shot was taken at a position, print a space character ' '
+
+    unsigned long long mask = 1u;
+
+    cb_append(buffer, "  0 1 2 3 4 5 6 7\n");
+
+    for (int j = 0; j < 64; ++j) {
+
+        if (j % 8 == 0) { cb_append_int(buffer, j / 8); cb_append(buffer, " "); }
+            
+        if (mask & player_info->shots) {
+
+            if (mask & player_info->hits) cb_append(buffer, "H ");
+            else cb_append(buffer, "M ");
+        }
+
+        else cb_append(buffer, "  ");
+
+        if (j % 8 == 7) cb_append(buffer, "\n");
+
+        mask = mask << 1ull;
+    }
 }
