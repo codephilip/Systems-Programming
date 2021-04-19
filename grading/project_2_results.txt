@@ -24,109 +24,7 @@ string: Foo
 
 [----------] 2 tests from xy_to_bitval
 [ RUN      ] xy_to_bitval.good_values
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:11: Failure
-Expected equality of these values:
-  xy_to_bitval(1, 0)
-    Which is: 1
-  2ull
-    Which is: 2
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:12: Failure
-Expected equality of these values:
-  xy_to_bitval(2, 0)
-    Which is: 1
-  4ull
-    Which is: 4
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:13: Failure
-Expected equality of these values:
-  xy_to_bitval(3, 0)
-    Which is: 1
-  8ull
-    Which is: 8
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:14: Failure
-Expected equality of these values:
-  xy_to_bitval(4, 0)
-    Which is: 1
-  16ull
-    Which is: 16
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:15: Failure
-Expected equality of these values:
-  xy_to_bitval(5, 0)
-    Which is: 1
-  32ull
-    Which is: 32
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:16: Failure
-Expected equality of these values:
-  xy_to_bitval(6, 0)
-    Which is: 1
-  64ull
-    Which is: 64
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:17: Failure
-Expected equality of these values:
-  xy_to_bitval(7, 0)
-    Which is: 1
-  128ull
-    Which is: 128
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:20: Failure
-Expected equality of these values:
-  xy_to_bitval(0, 1)
-    Which is: 1
-  256ull
-    Which is: 256
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:21: Failure
-Expected equality of these values:
-  xy_to_bitval(1, 1)
-    Which is: 1
-  512ull
-    Which is: 512
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:22: Failure
-Expected equality of these values:
-  xy_to_bitval(2, 1)
-    Which is: 1
-  1024ull
-    Which is: 1024
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:23: Failure
-Expected equality of these values:
-  xy_to_bitval(3, 1)
-    Which is: 1
-  2048ull
-    Which is: 2048
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:24: Failure
-Expected equality of these values:
-  xy_to_bitval(4, 1)
-    Which is: 1
-  4096ull
-    Which is: 4096
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:25: Failure
-Expected equality of these values:
-  xy_to_bitval(5, 1)
-    Which is: 1
-  8192ull
-    Which is: 8192
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:26: Failure
-Expected equality of these values:
-  xy_to_bitval(6, 1)
-    Which is: 1
-  16384ull
-    Which is: 16384
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:27: Failure
-Expected equality of these values:
-  xy_to_bitval(7, 1)
-    Which is: 1
-  32768ull
-    Which is: 32768
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:30: Failure
-Expected equality of these values:
-  xy_to_bitval(0, 7)
-    Which is: 1
-  1ull << 56ull
-    Which is: 72057594037927936
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:33: Failure
-Expected equality of these values:
-  xy_to_bitval(7, 7)
-    Which is: 1
-  1ull << 63ull
-    Which is: 9223372036854775808
-[  FAILED  ] xy_to_bitval.good_values (1 ms)
+[       OK ] xy_to_bitval.good_values (0 ms)
 [ RUN      ] xy_to_bitval.bad_values
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:37: Failure
 Expected equality of these values:
@@ -136,50 +34,35 @@ Expected equality of these values:
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:38: Failure
 Expected equality of these values:
   xy_to_bitval(8, 0)
-    Which is: 1
+    Which is: 256
   0
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:39: Failure
 Expected equality of these values:
   xy_to_bitval(-1, 0)
-    Which is: 1
+    Which is: 9223372036854775808
   0
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:40: Failure
 Expected equality of these values:
   xy_to_bitval(0, -1)
-    Which is: 1
+    Which is: 72057594037927936
   0
 [  FAILED  ] xy_to_bitval.bad_values (0 ms)
-[----------] 2 tests from xy_to_bitval (1 ms total)
+[----------] 2 tests from xy_to_bitval (0 ms total)
 
 [----------] 6 tests from game_fire
 [ RUN      ] game_fire.empty_game
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:47: Failure
-Expected equality of these values:
-  game_fire(gameon,1,0,0)
-    Which is: 555622576
-  0
-[  FAILED  ] game_fire.empty_game (0 ms)
+[       OK ] game_fire.empty_game (0 ms)
 [ RUN      ] game_fire.hit_fire
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:56: Failure
-Expected equality of these values:
-  game_fire(gameon,1,0,0)
-    Which is: 555622576
-  1
-[  FAILED  ] game_fire.hit_fire (0 ms)
+[       OK ] game_fire.hit_fire (0 ms)
 [ RUN      ] game_fire.hit_fire2
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:80: Failure
 Expected equality of these values:
   game_fire(gameon,0,0,0)
-    Which is: 555622576
+    Which is: 0
   1
 [  FAILED  ] game_fire.hit_fire2 (0 ms)
 [ RUN      ] game_fire.miss_fire
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:105: Failure
-Expected equality of these values:
-  game_fire(gameon,1,5,0)
-    Which is: 555622576
-  0
-[  FAILED  ] game_fire.miss_fire (0 ms)
+[       OK ] game_fire.miss_fire (0 ms)
 [ RUN      ] game_fire.miss_fire2
   0 1 2 3 4 5 6 7
 0 0 0 0 0 0 0 0 0
@@ -190,36 +73,21 @@ Expected equality of these values:
 5 0 0 0 0 0 0 0 0
 6 0 0 0 0 0 0 0 0
 7 0 0 0 0 0 0 0 0
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:160: Failure
-Expected equality of these values:
-  game_fire(gameon,0,1,0)
-    Which is: 555622576
-  0
-[  FAILED  ] game_fire.miss_fire2 (0 ms)
+[       OK ] game_fire.miss_fire2 (0 ms)
 [ RUN      ] game_fire.invalid_fire
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:215: Failure
+/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:216: Failure
 Expected equality of these values:
-  game_fire(gameon,1,8,0)
-    Which is: 555622576
+  game_fire(gameon,1,0,8)
+    Which is: 1
   0
 [  FAILED  ] game_fire.invalid_fire (0 ms)
 [----------] 6 tests from game_fire (0 ms total)
 
 [----------] 2 tests from add_ship_horizontal
 [ RUN      ] add_ship_horizontal.empty_ship
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:229: Failure
-Expected equality of these values:
-  add_ship_horizontal(player_info,1,8,0)
-    Which is: 555622584
-  1
-[  FAILED  ] add_ship_horizontal.empty_ship (0 ms)
+[       OK ] add_ship_horizontal.empty_ship (0 ms)
 [ RUN      ] add_ship_horizontal.load_ship
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:239: Failure
-Expected equality of these values:
-  add_ship_horizontal(player_info,0,0,5)
-    Which is: 555622584
-  1
-[  FAILED  ] add_ship_horizontal.load_ship (0 ms)
+[       OK ] add_ship_horizontal.load_ship (0 ms)
 [----------] 2 tests from add_ship_horizontal (0 ms total)
 
 [----------] 2 tests from add_ship_vertical
@@ -227,145 +95,12 @@ Expected equality of these values:
 /home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:250: Failure
 Expected equality of these values:
   add_ship_vertical(player_info,1,8,0)
-    Which is: 555622584
+    Which is: -1
   1
 [  FAILED  ] add_ship_vertical.empty_ship (0 ms)
 [ RUN      ] add_ship_vertical.load_ship
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:260: Failure
-Expected equality of these values:
-  add_ship_vertical(player_info,0,0,5)
-    Which is: 555622584
-  1
-[  FAILED  ] add_ship_vertical.load_ship (0 ms)
+[       OK ] add_ship_vertical.load_ship (0 ms)
 [----------] 2 tests from add_ship_vertical (0 ms total)
 
 [----------] 3 tests from game_load_board
 [ RUN      ] game_load_board.empty_spec
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:271: Failure
-Expected equality of these values:
-  game_load_board(gameon,0,__null)
-    Which is: 555622576
-  -1
-[  FAILED  ] game_load_board.empty_spec (0 ms)
-[ RUN      ] game_load_board.incomplete_spec
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:279: Failure
-Expected equality of these values:
-  game_load_board(gameon,0,spec)
-    Which is: 555622576
-  -1
-[  FAILED  ] game_load_board.incomplete_spec (0 ms)
-[ RUN      ] game_load_board.valid_spec
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:309: Failure
-Expected equality of these values:
-  game_load_board(gameon, 0, spec)
-    Which is: 555622576
-  1
-[  FAILED  ] game_load_board.valid_spec (0 ms)
-[----------] 3 tests from game_load_board (0 ms total)
-
-[----------] 1 test from game_status
-[ RUN      ] game_status.is_correct
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/game.cpp:318: Failure
-Expected equality of these values:
-  game_load_board(pGame, 0, spec)
-    Which is: 555622576
-  1
-[  FAILED  ] game_status.is_correct (0 ms)
-[----------] 1 test from game_status (0 ms total)
-
-[----------] 2 tests from repl_print_ships
-[ RUN      ] repl_print_ships.print_ships
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/repl.cpp:26: Failure
-Expected equality of these values:
-  buffer->buffer
-    Which is: ""
-  expected
-    Which is: "  0 1 2 3 4 5 6 7 \n0 * * * * *       \n1               * \n2 *             * \n3 *   * * *       \n4 *               \n5 *               \n6                 \n7         * * *   \n"
-With diff:
-@@ -1,1 +1,9 @@
--""
-+  0 1 2 3 4 5 6 7 
-+0 * * * * *       
-+1               * 
-+2 *             * 
-+3 *   * * *       
-+4 *               
-+5 *               
-+6                 
-+7         * * *   \n
-
-[  FAILED  ] repl_print_ships.print_ships (0 ms)
-[ RUN      ] repl_print_ships.print_ship_status
-[       OK ] repl_print_ships.print_ship_status (0 ms)
-[----------] 2 tests from repl_print_ships (0 ms total)
-
-[----------] 2 tests from repl_print_hits
-[ RUN      ] repl_print_hits.print_hits
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/repl.cpp:50: Failure
-Expected equality of these values:
-  buffer->buffer
-    Which is: ""
-  expected
-    Which is: "  0 1 2 3 4 5 6 7 \n0 H               \n1                 \n2                 \n3                 \n4                 \n5                 \n6                 \n7                 \n"
-With diff:
-@@ -1,1 +1,9 @@
--""
-+  0 1 2 3 4 5 6 7 
-+0 H               
-+1                 
-+2                 
-+3                 
-+4                 
-+5                 
-+6                 
-+7                 \n
-
-[  FAILED  ] repl_print_hits.print_hits (0 ms)
-[ RUN      ] repl_print_hits.print_miss
-/home/carson/Projects/msu/csci-366-spring2021/grading/scripts/repos/philip_gehde/battlebit/googletest/repl.cpp:74: Failure
-Expected equality of these values:
-  buffer->buffer
-    Which is: ""
-  expected
-    Which is: "  0 1 2 3 4 5 6 7 \n0                 \n1                 \n2                 \n3                 \n4                 \n5                 \n6                 \n7 M               \n"
-With diff:
-@@ -1,1 +1,9 @@
--""
-+  0 1 2 3 4 5 6 7 
-+0                 
-+1                 
-+2                 
-+3                 
-+4                 
-+5                 
-+6                 
-+7 M               \n
-
-[  FAILED  ] repl_print_hits.print_miss (0 ms)
-[----------] 2 tests from repl_print_hits (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 23 tests from 9 test suites ran. (1 ms total)
-[  PASSED  ] 4 tests.
-[  FAILED  ] 19 tests, listed below:
-[  FAILED  ] xy_to_bitval.good_values
-[  FAILED  ] xy_to_bitval.bad_values
-[  FAILED  ] game_fire.empty_game
-[  FAILED  ] game_fire.hit_fire
-[  FAILED  ] game_fire.hit_fire2
-[  FAILED  ] game_fire.miss_fire
-[  FAILED  ] game_fire.miss_fire2
-[  FAILED  ] game_fire.invalid_fire
-[  FAILED  ] add_ship_horizontal.empty_ship
-[  FAILED  ] add_ship_horizontal.load_ship
-[  FAILED  ] add_ship_vertical.empty_ship
-[  FAILED  ] add_ship_vertical.load_ship
-[  FAILED  ] game_load_board.empty_spec
-[  FAILED  ] game_load_board.incomplete_spec
-[  FAILED  ] game_load_board.valid_spec
-[  FAILED  ] game_status.is_correct
-[  FAILED  ] repl_print_ships.print_ships
-[  FAILED  ] repl_print_hits.print_hits
-[  FAILED  ] repl_print_hits.print_miss
-
-19 FAILED TESTS
